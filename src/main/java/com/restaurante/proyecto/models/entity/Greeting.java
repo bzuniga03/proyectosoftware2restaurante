@@ -13,12 +13,19 @@ class Greeting {
     private Long id;
     @Column
     private String message;
+    @Column
+    private Double price;
 
     public Greeting() {
     }
 
     public Greeting(String message) {
         this.message = message;
+    }
+
+    public Greeting(String message, Double price) {
+        this.message = message;
+        this.price = price;
     }
 
     public Long getId() {
@@ -35,6 +42,14 @@ class Greeting {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
 

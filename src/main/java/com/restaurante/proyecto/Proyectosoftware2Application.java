@@ -18,8 +18,8 @@ public class Proyectosoftware2Application {
     @Bean
     ApplicationRunner applicationRunner(GreetingRepository greetingRepository) {
         return args -> {
-            greetingRepository.save(new Greeting("Hola"));
-            greetingRepository.save(new Greeting("Hi"));
+            greetingRepository.save(new Greeting("Hola",2.3));
+            greetingRepository.save(new Greeting("Hi",1.5));
         };
 
     }
