@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.*;
-import java.util.List;
 
 @SpringBootApplication
 public class Proyectosoftware2Application {
@@ -42,8 +41,8 @@ class HelloController {
     }
 
     @GetMapping("/greetings")
-    List<Greeting> greetings() {
-        return (List<Greeting>) greetingRepository.findAll();
+    Iterable<Greeting> greetings() {
+        return greetingRepository.findAll();
     }
 
 }
