@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>proyectosoftware2</name>
-    <description>Poyecto restaurante en Spring Boot</description>
+    <description>Proyecto restaurante en Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
