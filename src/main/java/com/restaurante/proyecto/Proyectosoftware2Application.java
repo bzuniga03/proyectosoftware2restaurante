@@ -1,9 +1,12 @@
 package com.restaurante.proyecto;
 
+import com.restaurante.proyecto.models.dao.GreetingRepository;
+import com.restaurante.proyecto.models.entity.Greeting;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Bean;
+
 
 @SpringBootApplication
 public class Proyectosoftware2Application {
@@ -12,13 +15,12 @@ public class Proyectosoftware2Application {
         SpringApplication.run(Proyectosoftware2Application.class, args);
     }
 
-}
+    @Bean
+    ApplicationRunner applicationRunner(GreetingRepository greetingRepository) {
+        return args -> {
+            greetingRepository.save(new Greeting("Hola",2.3));
+            greetingRepository.save(new Greeting("Hi",1.5));
+        };
 
-@RestController
-class HelloController {
-    @GetMapping("/")
-    String hello() {
-        return "Hello World";
     }
-
 }
