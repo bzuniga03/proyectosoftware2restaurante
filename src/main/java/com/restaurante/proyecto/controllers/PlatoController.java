@@ -1,6 +1,7 @@
 package com.restaurante.proyecto.controllers;
 
 
+import com.restaurante.proyecto.controllers.objetos.ObjetoPlato;
 import com.restaurante.proyecto.models.dao.CategoriaRepository;
 import com.restaurante.proyecto.models.dao.PlatoRepository;
 import com.restaurante.proyecto.models.entity.Categoria;
@@ -30,9 +31,21 @@ class PlatoController {
             mnu.setIdCategoria(categoria.getCtg_id());
             mnu.setDescripcionCategoria(categoria.getCtg_descripcion());
 
-            List<Plato> platos = (List<Plato>) platoRepository.findAll();
+            List<Plato> platos = (List<Plato>) platoRepository.platoporCategoria(categoria);
+            List<ObjetoPlato> platoList = new ArrayList<>();
 
-            mnu.setPlatoList(platos);
+            for (Plato plato : platos) {
+                ObjetoPlato objetoPlato = new ObjetoPlato();
+
+                objetoPlato.setId(plato.getPtl_id());
+                objetoPlato.setDescripcion(plato.getPtl_descripcion());
+                objetoPlato.setPrecio(plato.getPtl_precio());
+
+                platoList.add(objetoPlato);
+            }
+
+            mnu.setPlatoList(platoList);
+            menu.add(mnu);
 
         }
         return menu;

@@ -8,7 +8,7 @@ public class MenuRestaurante {
 
     private Long idCategoria;
     private String descripcionCategoria;
-    private List<Plato> platoList;
+    private List<ObjetoPlato> platoList;
 
     public MenuRestaurante() {
     }
@@ -29,11 +29,11 @@ public class MenuRestaurante {
         this.descripcionCategoria = descripcionCategoria;
     }
 
-    public List<Plato> getPlatoList() {
+    public List<ObjetoPlato> getPlatoList() {
         return platoList;
     }
 
-    public void setPlatoList(List<Plato> platoList) {
+    public void setPlatoList(List<ObjetoPlato> platoList) {
         this.platoList = platoList;
     }
 }
