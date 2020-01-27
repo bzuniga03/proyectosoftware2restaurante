@@ -24,16 +24,6 @@ public class Proyectosoftware2Application {
         return args -> {
             greetingRepository.save(new Greeting("Hola", 2.3));
             greetingRepository.save(new Greeting("Hi", 1.5));
-/*
-            Categoria categoria = new Categoria("Plato Fuerte");
-            Categoria categoria2 = new Categoria("Sopas");
-            Categoria categoria3 = new Categoria("Entradas");
-
-            platoRepository.save(new Plato("Churrasco", 5d, categoria));
-            platoRepository.save(new Plato("Sopa de pollo", 1.3, categoria2));
-            platoRepository.save(new Plato("Queso", 8d, categoria3));
-
- */
         };
 
     }
