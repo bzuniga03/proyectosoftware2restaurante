@@ -7,6 +7,7 @@ import com.restaurante.proyecto.models.dao.PlatoRepository;
 import com.restaurante.proyecto.models.entity.Categoria;
 import com.restaurante.proyecto.controllers.objetos.MenuRestaurante;
 import com.restaurante.proyecto.models.entity.Plato;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ class PlatoController {
     private final PlatoRepository platoRepository;
     private final CategoriaRepository categoriaRepository;
 
-
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/obtenerMenu")
     List<MenuRestaurante> obtenerMenu() {
 
