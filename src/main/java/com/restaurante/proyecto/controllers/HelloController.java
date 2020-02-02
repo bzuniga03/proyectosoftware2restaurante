@@ -2,7 +2,7 @@ package com.restaurante.proyecto.controllers;
 
 
 import com.restaurante.proyecto.models.dao.GreetingRepository;
-import com.restaurante.proyecto.models.entity.Greeting;
+import com.restaurante.proyecto.models.entity.GreetingEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +20,8 @@ class HelloController {
     }
 
     @GetMapping("/greetings")
-    List<Greeting> greetings() {
-        return (List<Greeting>) greetingRepository.findAll();
+    List<GreetingEntity> greetings() {
+        return (List<GreetingEntity>) greetingRepository.findAll();
     }
 
     HelloController(GreetingRepository greetingRepository) {

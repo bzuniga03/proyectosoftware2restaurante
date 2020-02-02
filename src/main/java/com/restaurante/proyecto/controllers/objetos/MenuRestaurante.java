@@ -1,7 +1,5 @@
 package com.restaurante.proyecto.controllers.objetos;
 
-import com.restaurante.proyecto.models.entity.Plato;
-
 import java.util.List;
 
 public class MenuRestaurante {

@@ -4,9 +4,9 @@ package com.restaurante.proyecto.controllers;
 import com.restaurante.proyecto.controllers.objetos.ObjetoPlato;
 import com.restaurante.proyecto.models.dao.CategoriaRepository;
 import com.restaurante.proyecto.models.dao.PlatoRepository;
-import com.restaurante.proyecto.models.entity.Categoria;
 import com.restaurante.proyecto.controllers.objetos.MenuRestaurante;
-import com.restaurante.proyecto.models.entity.Plato;
+import com.restaurante.proyecto.models.entity.CategoriaEntity;
+import com.restaurante.proyecto.models.entity.PlatoEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,22 +25,22 @@ class PlatoController {
 
         List<MenuRestaurante> menu = new ArrayList<>();
 
-        List<Categoria> categorias = (List<Categoria>) categoriaRepository.findAll();
+        List<CategoriaEntity> categorias = (List<CategoriaEntity>) categoriaRepository.findAll();
 
-        for (Categoria categoria : categorias) {
+        for (CategoriaEntity categoria : categorias) {
             MenuRestaurante mnu = new MenuRestaurante();
-            mnu.setIdCategoria(categoria.getCtg_id());
-            mnu.setDescripcionCategoria(categoria.getCtg_descripcion());
+            mnu.setIdCategoria(categoria.getCtgId());
+            mnu.setDescripcionCategoria(categoria.getCtgDescripcion());
 
-            List<Plato> platos = (List<Plato>) platoRepository.platoporCategoria(categoria);
+            List<PlatoEntity> platos = (List<PlatoEntity>) platoRepository.platoporCategoria(categoria);
             List<ObjetoPlato> platoList = new ArrayList<>();
 
-            for (Plato plato : platos) {
+            for (PlatoEntity plato : platos) {
                 ObjetoPlato objetoPlato = new ObjetoPlato();
 
-                objetoPlato.setId(plato.getPtl_id());
-                objetoPlato.setDescripcion(plato.getPtl_descripcion());
-                objetoPlato.setPrecio(plato.getPtl_precio());
+                objetoPlato.setId(plato.getPtlId());
+                objetoPlato.setDescripcion(plato.getPtlDescripcion());
+                objetoPlato.setPrecio(plato.getPtlPrecio());
 
                 platoList.add(objetoPlato);
             }
