@@ -10,7 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 
-public interface PedidoRepository extends CrudRepository<PedidoEntity, Long> {
+public interface PedidoRepository extends CrudRepository<PedidoEntity, Integer> {
 
     @Query("select p from PedidoEntity p where p.pddEstado= 'A'")
     List<PedidoEntity> PedidosAbiertos();

@@ -9,12 +9,12 @@ import com.restaurante.proyecto.models.dao.PedidoRepository;
 import com.restaurante.proyecto.models.entity.DetallePedidoEntity;
 import com.restaurante.proyecto.models.entity.PedidoEntity;
 import com.restaurante.proyecto.models.entity.PlatoEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 class PedidoController {
@@ -50,6 +50,23 @@ class PedidoController {
         }
         return pedidos;
     }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/cerrarPedido/{numeroPedido}")
+    public boolean cerrarPedido(@PathVariable int numeroPedido) {
+
+        boolean ret = false;
+        Optional<PedidoEntity> pedidoEntity = pedidoRepository.findById(numeroPedido);
+
+        if (pedidoEntity.isPresent()) {
+            pedidoEntity.get().setPddEstado("C");
+            pedidoRepository.save(pedidoEntity.get());
+            ret = true;
+        }
+
+        return ret;
+    }
+
 
     PedidoController(PedidoRepository pedidoRepository, DetallePedidoRepository detallePedidoRepository) {
         this.pedidoRepository = pedidoRepository;
