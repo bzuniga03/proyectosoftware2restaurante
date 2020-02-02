@@ -1,19 +1,17 @@
 package com.restaurante.proyecto.models.dao;
 
 
-import com.restaurante.proyecto.models.entity.Categoria;
-import com.restaurante.proyecto.models.entity.Greeting;
-import com.restaurante.proyecto.models.entity.Plato;
+import com.restaurante.proyecto.models.entity.CategoriaEntity;
+import com.restaurante.proyecto.models.entity.PlatoEntity;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.Repository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
 
-public interface PlatoRepository extends CrudRepository<Plato, Long> {
+public interface PlatoRepository extends CrudRepository<PlatoEntity, Long> {
 
-    @Query("select p from Plato p where p.ptl_categoria=?1")
-    List<Plato> platoporCategoria(Categoria categoria);
+    @Query("select p from PlatoEntity p where p.categoriaByPtlCategoria=?1")
+    List<PlatoEntity> platoporCategoria(CategoriaEntity categoria);
 
 }

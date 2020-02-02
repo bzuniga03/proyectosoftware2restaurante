@@ -1,8 +1,8 @@
 package com.restaurante.proyecto.models.dao;
 
 
-import com.restaurante.proyecto.models.entity.Greeting;
+import com.restaurante.proyecto.models.entity.GreetingEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface GreetingRepository extends CrudRepository<Greeting, Long> {
+public interface GreetingRepository extends CrudRepository<GreetingEntity, Long> {
 }
