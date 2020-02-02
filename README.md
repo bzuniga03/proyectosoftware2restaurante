@@ -1,7 +1,7 @@
 # proyectosoftware2restaurante
 
 SCRIPT SQL
-
+```sql
 create table CATEGORIA
 (
     CTG_ID          serial
@@ -79,3 +79,5 @@ INSERT INTO pedido (pdd_comentario,pdd_mesa) VALUES ('Extra Carne',3);
 INSERT INTO detalle_pedido (dpd_pedido, dpd_plato) VALUES (1,2);
 INSERT INTO detalle_pedido (dpd_pedido, dpd_plato) VALUES (2,1);
 INSERT INTO detalle_pedido (dpd_pedido, dpd_plato) VALUES (3,3);
+
+```
