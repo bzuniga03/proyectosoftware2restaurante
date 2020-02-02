@@ -40,8 +40,7 @@ class PedidoController {
 
             StringBuilder listaPedidos = new StringBuilder();
             for (DetallePedidoEntity detallePedidoEntity : pedidoEntityList) {
-                listaPedidos.append(detallePedidoEntity.getPlatoEntity().getPtlDescripcion());
-
+                listaPedidos.append(detallePedidoEntity.getPlatoEntity().getPtlDescripcion()).append(",");
             }
 
             objetoPedido.setPlatos(listaPedidos.toString());
