@@ -55,9 +55,4 @@ class PlatoController {
         return menu;
     }
 
-    PlatoController(PlatoRepository platoRepository, CategoriaRepository categoriaRepository) {
-        this.platoRepository = platoRepository;
-        this.categoriaRepository = categoriaRepository;
-    }
-
 }
