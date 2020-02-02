@@ -7,6 +7,7 @@ import com.restaurante.proyecto.models.dao.PlatoRepository;
 import com.restaurante.proyecto.controllers.objetos.MenuRestaurante;
 import com.restaurante.proyecto.models.entity.CategoriaEntity;
 import com.restaurante.proyecto.models.entity.PlatoEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,10 @@ import java.util.List;
 
 @RestController
 class PlatoController {
-    private final PlatoRepository platoRepository;
-    private final CategoriaRepository categoriaRepository;
+    @Autowired
+    private PlatoRepository platoRepository;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/obtenerMenu")
