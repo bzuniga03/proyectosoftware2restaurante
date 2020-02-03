@@ -1,16 +1,19 @@
 package com.restaurante.proyecto.controllers;
 
 
+import com.google.gson.Gson;
+import com.restaurante.proyecto.controllers.objetos.ObjetoIngresoPedido;
 import com.restaurante.proyecto.controllers.objetos.ObjetoPedido;
-import com.restaurante.proyecto.controllers.objetos.ObjetoPlato;
-import com.restaurante.proyecto.models.dao.CategoriaRepository;
 import com.restaurante.proyecto.models.dao.DetallePedidoRepository;
+import com.restaurante.proyecto.models.dao.MesaRepository;
 import com.restaurante.proyecto.models.dao.PedidoRepository;
+import com.restaurante.proyecto.models.dao.PlatoRepository;
 import com.restaurante.proyecto.models.entity.DetallePedidoEntity;
+import com.restaurante.proyecto.models.entity.MesaEntity;
 import com.restaurante.proyecto.models.entity.PedidoEntity;
 import com.restaurante.proyecto.models.entity.PlatoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,6 +26,10 @@ class PedidoController {
     private PedidoRepository pedidoRepository;
     @Autowired
     private DetallePedidoRepository detallePedidoRepository;
+    @Autowired
+    private MesaRepository mesaRepository;
+    @Autowired
+    private PlatoRepository platoRepository;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/obtenerPedidos")
@@ -71,12 +78,53 @@ class PedidoController {
         return ret;
     }
 
+    @Transactional
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/ingresarPedido")
-    public String ingresarPedido(@RequestBody String pedidoJson) {
+    public Boolean ingresarPedido(@RequestBody String pedidoJson) {
+        boolean ret = false;
+        Gson gson = new Gson();
 
         System.out.println(pedidoJson);
-        return pedidoJson;
+
+        ObjetoIngresoPedido objetoIngresoPedido = gson.fromJson(pedidoJson, ObjetoIngresoPedido.class);
+
+        if (objetoIngresoPedido != null) {
+            PedidoEntity pedidoEntity = new PedidoEntity();
+            Optional<MesaEntity> mesaEntity;
+
+            pedidoEntity.setPddEstado("A");
+            pedidoEntity.setPddComentario(objetoIngresoPedido.getComentarioPedido());
+            mesaEntity = mesaRepository.findById(objetoIngresoPedido.getMesa());
+
+            if (mesaEntity.isPresent()) {
+                pedidoEntity.setMesaByPddMesa(mesaEntity.get());
+            } else {
+                return ret;
+            }
+
+            pedidoEntity = pedidoRepository.save(pedidoEntity);
+
+            for (ObjetoIngresoPedido.detallePlato detalle : objetoIngresoPedido.getPlatos()) {
+
+                DetallePedidoEntity detallePedidoEntity = new DetallePedidoEntity();
+
+                Optional<PlatoEntity> platoEntity;
+                platoEntity = platoRepository.findById((long) detalle.getId());
+
+                if (!platoEntity.isPresent())
+                    return ret;
+
+                detallePedidoEntity.setPlatoEntity(platoEntity.get());
+                detallePedidoEntity.setPedidoEntity(pedidoEntity);
+
+                detallePedidoRepository.save(detallePedidoEntity);
+            }
+
+            ret = true;
+        }
+
+        return ret;
     }
 
 }
