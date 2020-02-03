@@ -71,4 +71,12 @@ class PedidoController {
         return ret;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PostMapping("/ingresarPedido")
+    public String ingresarPedido(@RequestBody String pedidoJson) {
+
+        System.out.println(pedidoJson);
+        return pedidoJson;
+    }
+
 }
