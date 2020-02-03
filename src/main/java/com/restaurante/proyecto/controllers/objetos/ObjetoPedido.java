@@ -6,15 +6,17 @@ public class ObjetoPedido {
     private String comentarioPedido;
     private Long mesa;
     private String platos;
+    private String estado;
 
     public ObjetoPedido() {
     }
 
-    public ObjetoPedido(Integer idPedido, String comentarioPedido, Long mesa, String platos) {
+    public ObjetoPedido(Integer idPedido, String comentarioPedido, Long mesa, String platos, String estado) {
         this.idPedido = idPedido;
         this.comentarioPedido = comentarioPedido;
         this.mesa = mesa;
         this.platos = platos;
+        this.estado = estado;
     }
 
     public Integer getIdPedido() {
@@ -47,5 +49,13 @@ public class ObjetoPedido {
 
     public void setPlatos(String platos) {
         this.platos = platos;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

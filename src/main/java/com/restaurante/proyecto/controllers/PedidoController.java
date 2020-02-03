@@ -38,6 +38,7 @@ class PedidoController {
             objetoPedido.setIdPedido(pedidoEntity.getPddId());
             objetoPedido.setComentarioPedido(pedidoEntity.getPddComentario());
             objetoPedido.setMesa((long) pedidoEntity.getMesaByPddMesa().getMsaId());
+            objetoPedido.setEstado(pedidoEntity.getPddEstado());
 
             List<DetallePedidoEntity> pedidoEntityList = detallePedidoRepository.detallePorPedido(pedidoEntity);
 
