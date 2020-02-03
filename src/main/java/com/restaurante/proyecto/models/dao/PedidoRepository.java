@@ -1,9 +1,7 @@
 package com.restaurante.proyecto.models.dao;
 
 
-import com.restaurante.proyecto.models.entity.CategoriaEntity;
 import com.restaurante.proyecto.models.entity.PedidoEntity;
-import com.restaurante.proyecto.models.entity.PlatoEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

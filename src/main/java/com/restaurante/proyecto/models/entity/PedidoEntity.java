@@ -12,6 +12,7 @@ public class PedidoEntity {
     private String pddEstado;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "pdd_id")
     public int getPddId() {
         return pddId;

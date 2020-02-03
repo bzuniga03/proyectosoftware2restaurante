@@ -11,6 +11,7 @@ public class DetallePedidoEntity {
     private PlatoEntity platoEntity;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "dpd_id")
     public int getDpdId() {
         return dpdId;
