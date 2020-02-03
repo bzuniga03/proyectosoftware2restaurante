@@ -1,5 +1,11 @@
 # proyectosoftware2restaurante
 
+Link vista
+https://pedidofacilito.herokuapp.com/greetings
+
+Link aplicacion funcionando
+https://proyectosoftware2restaurante.herokuapp.com/obtenerMenu
+
 SCRIPT SQL
 ```sql
 create table CATEGORIA
